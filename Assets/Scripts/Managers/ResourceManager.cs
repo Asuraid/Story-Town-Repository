@@ -9,15 +9,8 @@ namespace TeamMars.Capstone.Manager.Resources
         public static ResourceManager Instance { get; private set; }
 
         [Header("TextMeshPro References")]
-        public TextMeshProUGUI rawFish;
-        public TextMeshProUGUI cookedFish;
-        [Space(10)]
-        public TextMeshProUGUI rawGame;
-        public TextMeshProUGUI cookedGame;
-        [Space(10)]
-        public TextMeshProUGUI rawWood;
-        public TextMeshProUGUI refinedWood;
-        [Space(10)]
+        public TextMeshProUGUI food;
+        public TextMeshProUGUI wood;
         public TextMeshProUGUI stone;
 
         /// <summary>
@@ -42,180 +35,66 @@ namespace TeamMars.Capstone.Manager.Resources
             UpdateResources();
         }
 
-        #region Adding resources
-
+        #region Gathering resources
         /// <summary>
-        /// Add a set amount of raw game.
+        /// Add a set amount of food.
         /// </summary>
         /// <param name="amount">Gained amount.</param>
-        public void AddRawGame(int amount)
+        public void AddFood(int amount)
         {
-            GameManager.Instance.rawGame += amount;
-            rawGame.GetComponent<Text_Bump>().Bump();
-            rawGame.GetComponent<Text_Bump>().colorChangingPositive = true;
+            GameManager.Instance.food += amount;
             UpdateResources();
         }
 
         /// <summary>
-        /// Add a set amount of raw fish.
+        /// Add a set amount of wood.
         /// </summary>
         /// <param name="amount">Gained amount.</param>
-        public void AddRawFish(int amount)
+        public void AddWood(int amount)
         {
-            GameManager.Instance.rawFish += amount;
-            rawFish.GetComponent<Text_Bump>().Bump();
-            rawFish.GetComponent<Text_Bump>().colorChangingPositive = true;
+            GameManager.Instance.wood += amount;
             UpdateResources();
         }
 
         /// <summary>
-        /// Add a set amount of cooked game.
+        /// Add a set amount of stone.
         /// </summary>
         /// <param name="amount">Gained amount.</param>
-        public void AddCookedGame(int amount)
+        public void AddStone(int amount)
         {
-            GameManager.Instance.cookedGame += amount;
-            cookedGame.GetComponent<Text_Bump>().Bump();
-            cookedGame.GetComponent<Text_Bump>().colorChangingPositive = true;
+            GameManager.Instance.stone += amount;
             UpdateResources();
-        }
-
-        /// <summary>
-        /// Add a set amount of cooked fish.
-        /// </summary>
-        /// <param name="amount">Gained amount.</param>
-        public void AddCookedFish(int amount)
-        {
-            GameManager.Instance.cookedFish += amount;
-            cookedFish.GetComponent<Text_Bump>().Bump();
-            cookedFish.GetComponent<Text_Bump>().colorChangingPositive = true;
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Add a set amount of raw wood.
-        /// </summary>
-        /// <param name="amount">Gained amount.</param>
-        public void AddRawWood(int amount)
-        {
-            GameManager.Instance.rawWood += amount;
-            rawWood.GetComponent<Text_Bump>().Bump();
-            rawWood.GetComponent<Text_Bump>().colorChangingPositive = true;
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Add a set amount of refined wood.
-        /// </summary>
-        /// <param name="amount">Gained amount.</param>
-        public void AddRefinedWood(int amount)
-        {
-            GameManager.Instance.refinedWood += amount;
-            refinedWood.GetComponent<Text_Bump>().Bump();
-            refinedWood.GetComponent<Text_Bump>().colorChangingPositive = true;
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Add a set amount of raw stone.
-        /// </summary>
-        /// <param name="amount">Gained amount.</param>
-        public void AddRawStone(int amount)
-        {
-            GameManager.Instance.rawStone += amount;
-            stone.GetComponent<Text_Bump>().Bump();
-            stone.GetComponent<Text_Bump>().colorChangingPositive = true;
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Add a set amount of refined stone. Disabled due to no UI yet.
-        /// </summary>
-        /// <param name="amount">Gained amount.</param>
-        public void AddRefinedStone(int amount)
-        {
-            //GameManager.Instance.refinedStone += amount;
-            //refinedWood.GetComponent<Text_Bump>().Bump();
-            //refinedWood.GetComponent<Text_Bump>().colorChangingPositive = true;
-            //UpdateResources();
         }
         #endregion
 
         #region Using resources
         /// <summary>
-        /// Use a set amount of raw game.
+        /// Remove a set amount of food.
         /// </summary>
-        /// <param name="amount">Amount of raw game.</param>
-        public void UseRawGame(int amount)
+        /// <param name="amount">Gained amount.</param>
+        public void RemoveFood(int amount)
         {
-            GameManager.Instance.rawGame -= amount;
-            rawGame.GetComponent<Text_Bump>().Bump();
+            GameManager.Instance.food -= amount;
             UpdateResources();
         }
 
         /// <summary>
-        /// Use a set amount of raw fish.
+        /// Remove a set amount of wood.
         /// </summary>
-        /// <param name="amount">Amount of raw fish.</param>
-        public void UseRawFish(int amount)
+        /// <param name="amount">Gained amount.</param>
+        public void RemoveWood(int amount)
         {
-            GameManager.Instance.rawFish -= amount;
-            rawFish.GetComponent<Text_Bump>().Bump();
+            GameManager.Instance.wood -= amount;
             UpdateResources();
         }
 
         /// <summary>
-        /// Use a set amount of cooked game.
+        /// Remove a set amount of stone.
         /// </summary>
-        /// <param name="amount">Amount of cooked game.</param>
-        public void UseCookedGame(int amount)
+        /// <param name="amount">Gained amount.</param>
+        public void RemoveStone(int amount)
         {
-            GameManager.Instance.cookedGame -= amount;
-            cookedGame.GetComponent<Text_Bump>().Bump();
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Use a set amount of cooked fish.
-        /// </summary>
-        /// <param name="amount">Amount of cooked fish.</param>
-        public void UseCookedFish(int amount)
-        {
-            GameManager.Instance.cookedFish -= amount;
-            cookedFish.GetComponent<Text_Bump>().Bump();
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Use a set amount of raw wood.
-        /// </summary>
-        /// <param name="amount">Amount of raw wood.</param>
-        public void UseRawWood(int amount)
-        {
-            GameManager.Instance.rawWood -= amount;
-            rawWood.GetComponent<Text_Bump>().Bump();
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Use a set amount of refined wood.
-        /// </summary>
-        /// <param name="amount">Amount of refined wood.</param>
-        public void UseRefinedWood(int amount)
-        {
-            GameManager.Instance.refinedWood -= amount;
-            refinedWood.GetComponent<Text_Bump>().Bump();
-            UpdateResources();
-        }
-
-        /// <summary>
-        /// Use a set amount of raw stone.
-        /// </summary>
-        /// <param name="amount">Amount of raw stone.</param>
-        public void UseRawStone(int amount)
-        {
-            GameManager.Instance.rawStone -= amount;
-            stone.GetComponent<Text_Bump>().Bump();
+            GameManager.Instance.stone -= amount;
             UpdateResources();
         }
         #endregion
@@ -225,20 +104,10 @@ namespace TeamMars.Capstone.Manager.Resources
         /// </summary>
         public void UpdateResources()
         {
-
-            rawFish.text = GameManager.Instance.rawFish.ToString();
-            cookedFish.text = GameManager.Instance.cookedFish.ToString();
-
-            rawGame.text = GameManager.Instance.rawGame.ToString();
-            cookedGame.text = GameManager.Instance.cookedGame.ToString();
-
-            rawWood.text = GameManager.Instance.rawWood.ToString();
-            refinedWood.text = GameManager.Instance.refinedWood.ToString();
-
-            stone.text = GameManager.Instance.rawStone.ToString();
+            food.text = "Food: " + GameManager.Instance.food.ToString();
+            wood.text = "Wood: " + GameManager.Instance.wood.ToString();
+            stone.text = "Stone: " + GameManager.Instance.stone.ToString();
         }
-
-
     }
 }
 
